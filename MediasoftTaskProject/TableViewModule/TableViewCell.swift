@@ -11,10 +11,27 @@ import SnapKit
 class TableViewCell: UITableViewCell {
     
     //MARK: - Properties
+    weak var viewModel: TableViewCellViewModelProtocol? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            nameLabel.text = viewModel.fullName
+            descriptionLabel.text = viewModel.description
+            photoImageView.image = UIImage(named: viewModel.photo)
+        }
+    }
+    
+    lazy var favouritesButton: UIButton = {
+        let favouritesButton = UIButton(type: .system)
+        favouritesButton.setImage(UIImage(systemName: "star"), for: .normal)
+        favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
+        accessoryView = favouritesButton
+        return favouritesButton
+    }()
+    
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .left
-        nameLabel.numberOfLines = 0
         nameLabel.font = .systemFont(ofSize: 18)
         nameLabel.textColor = .black
         return nameLabel
@@ -38,15 +55,6 @@ class TableViewCell: UITableViewCell {
         return photoImageView
     }()
     
-    weak var viewModel: TableViewCellViewModelProtocol? {
-        willSet(viewModel) {
-            guard let viewModel = viewModel else { return }
-            nameLabel.text = viewModel.fullName
-            descriptionLabel.text = viewModel.description
-            photoImageView.image = UIImage(named: viewModel.photo)
-        }
-    }
-    
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -62,6 +70,7 @@ class TableViewCell: UITableViewCell {
     private func configureCell() {
         configurePhotoImage()
         configureNameLabel()
+        configureFavouritesButton()
         configureDescriptionLabel()
     }
     
@@ -84,11 +93,26 @@ class TableViewCell: UITableViewCell {
         }
     }
     
+    private func configureFavouritesButton() {
+        addSubview(favouritesButton)
+        favouritesButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().inset(20)
+        }
+    }
+    
     private func configureDescriptionLabel() {
         addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.left.equalTo(photoImageView.snp.right).offset(20)
             make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.right.equalTo(favouritesButton.snp.left).inset(-20)
         }
+    }
+    
+    @objc
+    private func favouritesButtonTapped() {
+        print("favouritesButton tapped")
+        favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
     }
 }

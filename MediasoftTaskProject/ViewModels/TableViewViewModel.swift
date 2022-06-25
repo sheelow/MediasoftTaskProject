@@ -10,9 +10,13 @@ import Foundation
 class TableViewViewModel: TableViewViewModelProtocol {
     
     var profiles = [
-        Profile(name: "Artem", secondName: "Shilov",description: "Some description", photo: "fakeava"),
-        Profile(name: "Sergey", secondName: "Kutsuev", description: "Some description", photo: "fakeava"),
-        Profile(name: "Alex", secondName: "Rich", description: "Some description", photo: "fakeava")
+        Profile(name: "Dave", secondName: "Winnel",description: "Some description", photo: "fakeava"),
+        Profile(name: "Paul", secondName: "Fisher", description: "Some description", photo: "fakeava"),
+        Profile(name: "Chris", secondName: "Lake",description: "Some description", photo: "fakeava"),
+        Profile(name: "Martin", secondName: "Garrix", description: "Some description", photo: "fakeava"),
+        Profile(name: "Sebastian", secondName: "Bennet",description: "Some description", photo: "fakeava"),
+        Profile(name: "James", secondName: "Hype", description: "Some description", photo: "fakeava"),
+        Profile(name: "Sonny", secondName: "Fodera", description: "Some description", photo: "fakeava")
     ]
     
     func numberOfRows() -> Int {
@@ -23,6 +27,5 @@ class TableViewViewModel: TableViewViewModelProtocol {
         let profile = profiles[indexPath.row]
         return TableViewCellViewModel(profile: profile)
     }
-    
     
 }
