@@ -10,6 +10,7 @@ import SnapKit
 
 class LoginViewController: UIViewController {
     
+    //MARK: - Properties
     var model: LoginViewModelProtocol?
     
     private lazy var welcomeLabel: UILabel = {
@@ -43,7 +44,7 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var loginButton: UIButton = {
-        let loginButton = UIButton()
+        let loginButton = UIButton(type: .system)
         loginButton.backgroundColor = .black
         loginButton.layer.cornerRadius = 10
         loginButton.setTitle("Login", for: .normal)
@@ -53,6 +54,7 @@ class LoginViewController: UIViewController {
         return loginButton
     }()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +62,7 @@ class LoginViewController: UIViewController {
         configureView()
     }
     
+    //MARK: - Methods
     private func configureView() {
         configureWelcomeLabel()
         configureLoginTextField()
@@ -119,8 +122,9 @@ class LoginViewController: UIViewController {
     
     @objc
     private func loginButtonTapped() {
-//        wrongLabel.textColor = .red
-        let navigationController = UINavigationController(rootViewController: MainTabBarController())
-        
+        wrongLabel.textColor = .red
+//        let vc = MainTabBarController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true)
     }
 }

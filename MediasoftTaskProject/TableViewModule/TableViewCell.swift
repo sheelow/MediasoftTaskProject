@@ -113,6 +113,6 @@ class TableViewCell: UITableViewCell {
     @objc
     private func favouritesButtonTapped() {
         print("favouritesButton tapped")
-        favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+//        favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
     }
 }

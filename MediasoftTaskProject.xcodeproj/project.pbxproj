@@ -80,8 +80,7 @@
 		97FDA1E72866EF96001D4A17 /* MediasoftTaskProject */ = {
 			isa = PBXGroup;
 			children = (
-				97FDA1E82866EF96001D4A17 /* AppDelegate.swift */,
-				97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */,
+				97FDA22028675A1C001D4A17 /* Application */,
 				97FDA2092866F7BE001D4A17 /* CollectionViewModule */,
 				97FDA20A2866F92A001D4A17 /* LoginViewModule */,
 				97FDA21D286727BF001D4A17 /* Models */,
@@ -156,6 +155,15 @@
 				97FDA21E286727D7001D4A17 /* Profile.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		97FDA22028675A1C001D4A17 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				97FDA1E82866EF96001D4A17 /* AppDelegate.swift */,
+				97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

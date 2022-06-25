@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TableViewCellViewModelProtocol: class {
+protocol TableViewCellViewModelProtocol: AnyObject {
     var fullName: String { get }
     var description: String { get }
     var photo: String { get }
