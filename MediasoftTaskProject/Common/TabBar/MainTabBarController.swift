@@ -11,16 +11,16 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureTabBar()
     }
     
     private func configureTabBar() {
-        tabBar.backgroundColor = .systemGray5
+        tabBar.backgroundColor = .white
         
-        let tableViewNavigationController = UINavigationController(rootViewController: TableViewController())
-        
-        let collectionViewNavigationController = UINavigationController(rootViewController: CollectionViewController())
+        let tableViewPresenter: TableViewPresenterProtocol = TableViewPresenter()
+        let tableViewNavigationController = UINavigationController(rootViewController: TableViewController(presenter: tableViewPresenter))
+        let collectionViewPresenter: CollectionViewPresenterProtocol = CollectionViewPresenter()
+        let collectionViewNavigationController = UINavigationController(rootViewController: CollectionViewController(presenter: collectionViewPresenter))
         
         viewControllers = [tableViewNavigationController, collectionViewNavigationController]
         

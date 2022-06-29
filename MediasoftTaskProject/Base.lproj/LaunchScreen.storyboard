@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,19 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="j1q-Yl-qxf">
+                            <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="j1q-Yl-qxf">
                                 <rect key="frame" x="107" y="328.5" width="200" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="eGQ-oq-pee"/>
                                     <constraint firstAttribute="height" constant="200" id="sRd-9q-h4Z"/>
                                 </constraints>
+                                <color key="color" systemColor="systemGrayColor"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O13-ia-YcS">
+                                <rect key="frame" x="90" y="237" width="217" height="56"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="O13-ia-YcS" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.524155" id="B9E-OT-OoQ"/>
+                            <constraint firstItem="O13-ia-YcS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="193" id="Q8W-hZ-uuv"/>
                             <constraint firstItem="j1q-Yl-qxf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="W06-J3-jZy"/>
+                            <constraint firstItem="O13-ia-YcS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-8.5" id="W6w-UM-RwR"/>
+                            <constraint firstItem="O13-ia-YcS" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.0625" id="aX2-d7-XFl"/>
                             <constraint firstItem="j1q-Yl-qxf" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vcC-Di-DF3"/>
                         </constraints>
                     </view>
@@ -38,4 +52,9 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

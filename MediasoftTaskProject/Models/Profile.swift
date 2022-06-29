@@ -7,9 +7,27 @@
 
 import Foundation
 
-struct Profile {
-    var name: String
-    var secondName: String
-    var description: String
-    var photo: String
+struct Profile: Decodable {
+    let results: [ResultPhoto]
+}
+
+struct ResultPhoto: Decodable {
+    let id: String?
+    let urls: Urls?
+    let user: User?
+    let description: String?
+}
+
+struct Urls: Decodable {
+    let regular: String?
+}
+
+struct User: Decodable {
+    let firstName: String?
+    let lastName: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case firstName = "first_name"
+        case lastName = "last_name"
+    }
 }

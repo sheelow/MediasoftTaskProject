@@ -7,31 +7,43 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
+//MARK: - TableViewCellModel
+struct TableViewCellModel {
+    let name: String
+    let secondName: String
+    let description: String
+    let photo: String
+}
+
+protocol TableViewCellProtocol: AnyObject {
+    func didPressTableViewCellFavouritesTutton(isSelected: Bool, model: TableViewCellModel)
+}
+
+
+//MARK: - TableViewCell
 class TableViewCell: UITableViewCell {
     
     //MARK: - Properties
-    weak var viewModel: TableViewCellViewModelProtocol? {
-        willSet(viewModel) {
-            guard let viewModel = viewModel else { return }
-            nameLabel.text = viewModel.fullName
-            descriptionLabel.text = viewModel.description
-            photoImageView.image = UIImage(named: viewModel.photo)
-        }
-    }
+    weak var delegate: TableViewCellProtocol?
+    var model: TableViewCellModel?
     
-    lazy var favouritesButton: UIButton = {
+    private lazy var favouritesButton: UIButton = {
         let favouritesButton = UIButton(type: .system)
-        favouritesButton.setImage(UIImage(systemName: "star"), for: .normal)
+        favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        favouritesButton.tintColor = .systemGray
         favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
-        accessoryView = favouritesButton
         return favouritesButton
     }()
+    
+    private var isSelectedButton = false
     
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .left
+        nameLabel.numberOfLines = 1
         nameLabel.font = .systemFont(ofSize: 18)
         nameLabel.textColor = .black
         return nameLabel
@@ -40,7 +52,7 @@ class TableViewCell: UITableViewCell {
     private lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.textAlignment = .left
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = 4
         descriptionLabel.font = .systemFont(ofSize: 14)
         descriptionLabel.textColor = .black
         return descriptionLabel
@@ -48,8 +60,8 @@ class TableViewCell: UITableViewCell {
     
     private lazy var photoImageView: UIImageView = {
         let photoImageView = UIImageView()
-        photoImageView.contentMode = .scaleAspectFit
-        photoImageView.layer.cornerRadius = 25
+        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.layer.cornerRadius = 60
         photoImageView.layer.masksToBounds = true
 
         return photoImageView
@@ -67,7 +79,19 @@ class TableViewCell: UITableViewCell {
     }
     
     //MARK: - Methods
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isSelectedButton = false
+        favouritesButton.tintColor = .systemGray
+    }
+    func setContent() {
+        nameLabel.text = (self.model?.name ?? "") + " " + (self.model?.secondName ?? "")
+        descriptionLabel.text = self.model?.description
+        self.photoImageView.kf.setImage(with: URL(string: model?.photo  ?? ""), placeholder: nil)
+    }
+    
     private func configureCell() {
+        accessoryView = favouritesButton
         configurePhotoImage()
         configureNameLabel()
         configureFavouritesButton()
@@ -90,15 +114,17 @@ class TableViewCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(photoImageView.snp.right).offset(20)
             make.top.equalToSuperview().inset(20)
+            make.width.equalToSuperview().inset(120)
         }
     }
     
     private func configureFavouritesButton() {
-        addSubview(favouritesButton)
-        favouritesButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().inset(20)
-        }
+        accessoryView = favouritesButton
+//        addSubview(favouritesButton)
+//        favouritesButton.snp.makeConstraints { make in
+//            make.centerY.equalToSuperview()
+//            make.right.equalToSuperview().inset(20)
+//        }
     }
     
     private func configureDescriptionLabel() {
@@ -106,13 +132,16 @@ class TableViewCell: UITableViewCell {
         descriptionLabel.snp.makeConstraints { make in
             make.left.equalTo(photoImageView.snp.right).offset(20)
             make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.right.equalTo(favouritesButton.snp.left).inset(-20)
+            make.width.equalToSuperview().inset(120)
         }
     }
     
     @objc
     private func favouritesButtonTapped() {
-        print("favouritesButton tapped")
-//        favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+//        print("favouritesButton tapped")
+        isSelectedButton.toggle()
+        favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
+        guard let model = model else { return }
+        delegate?.didPressTableViewCellFavouritesTutton(isSelected: isSelectedButton, model: model)
     }
 }

@@ -3,4 +3,86 @@
    uuid = "39C4F40B-17E6-4E8E-8F46-B5673BE234ED"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99B4D731-D4DC-4D32-BF3D-CA7DF5D16DDA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MediasoftTaskProject/Presentation/CollectionView/Views/CollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "init(frame:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "99B4D731-D4DC-4D32-BF3D-CA7DF5D16DDA - 819fb9548795c7ee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MediasoftTaskProject.CollectionViewCell.__allocating_init(frame: __C.CGRect) -&gt; MediasoftTaskProject.CollectionViewCell"
+                  moduleName = "MediasoftTaskProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/artemshilov/Documents/GitHub/MediasoftTaskProject/MediasoftTaskProject/Presentation/CollectionView/Views/CollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "99B4D731-D4DC-4D32-BF3D-CA7DF5D16DDA - af4760168ffef123"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MediasoftTaskProject.CollectionViewCell.init(frame: __C.CGRect) -&gt; MediasoftTaskProject.CollectionViewCell"
+                  moduleName = "MediasoftTaskProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/artemshilov/Documents/GitHub/MediasoftTaskProject/MediasoftTaskProject/Presentation/CollectionView/Views/CollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D528160E-A193-42BF-9343-6DCE336A459B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MediasoftTaskProject/Presentation/CollectionView/CollectionViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "cellForItemAt(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29F2D65C-5D9D-412A-A57E-CF6025F44559"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MediasoftTaskProject/Presentation/CollectionView/CollectionViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "cellForItemAt(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

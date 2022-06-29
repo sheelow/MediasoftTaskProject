@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		971530D12869BA190025BC4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D02869BA190025BC4E /* Constants.swift */; };
+		971530D32869BBE20025BC4E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D22869BBE20025BC4E /* TokenModel.swift */; };
+		971530D52869BC070025BC4E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D42869BC070025BC4E /* NetworkService.swift */; };
+		971530D82869BC680025BC4E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 971530D72869BC680025BC4E /* Alamofire */; };
+		971530DF2869CC520025BC4E /* TableViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530DE2869CC520025BC4E /* TableViewPresenter.swift */; };
+		971530EB2869DE520025BC4E /* CollectionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530EA2869DE520025BC4E /* CollectionViewPresenter.swift */; };
+		974DC441286B8D960061DC83 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 974DC440286B8D960061DC83 /* Kingfisher */; };
+		97750CA3286CC4860095AFA6 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 97750CA2286CC4860095AFA6 /* SQLite */; };
+		97750CA5286CC4EA0095AFA6 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97750CA4286CC4EA0095AFA6 /* DatabaseService.swift */; };
+		97E32F90286A2219000DD4A2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97E32F8F286A2219000DD4A2 /* SnapKit */; };
 		97FDA1E92866EF96001D4A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA1E82866EF96001D4A17 /* AppDelegate.swift */; };
 		97FDA1EB2866EF96001D4A17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */; };
 		97FDA1F22866EF97001D4A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97FDA1F12866EF97001D4A17 /* Assets.xcassets */; };
@@ -18,16 +28,16 @@
 		97FDA2052866F79C001D4A17 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA2042866F79C001D4A17 /* TableViewCell.swift */; };
 		97FDA2082866F7BA001D4A17 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA2072866F7BA001D4A17 /* CollectionViewCell.swift */; };
 		97FDA20E2866FBF7001D4A17 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97FDA20D2866FBF7001D4A17 /* SnapKit */; };
-		97FDA21028672360001D4A17 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA20F28672360001D4A17 /* LoginViewModel.swift */; };
-		97FDA2132867238C001D4A17 /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA2122867238C001D4A17 /* LoginViewModelProtocol.swift */; };
-		97FDA216286725EE001D4A17 /* TableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA215286725EE001D4A17 /* TableViewViewModel.swift */; };
-		97FDA2182867260B001D4A17 /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA2172867260B001D4A17 /* TableViewCellViewModel.swift */; };
-		97FDA21A2867262C001D4A17 /* TableViewCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA2192867262C001D4A17 /* TableViewCellViewModelProtocol.swift */; };
-		97FDA21C2867265C001D4A17 /* TableViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA21B2867265C001D4A17 /* TableViewViewModelProtocol.swift */; };
 		97FDA21F286727D7001D4A17 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA21E286727D7001D4A17 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		971530D02869BA190025BC4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		971530D22869BBE20025BC4E /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		971530D42869BC070025BC4E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		971530DE2869CC520025BC4E /* TableViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPresenter.swift; sourceTree = "<group>"; };
+		971530EA2869DE520025BC4E /* CollectionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPresenter.swift; sourceTree = "<group>"; };
+		97750CA4286CC4EA0095AFA6 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		97FDA1E52866EF96001D4A17 /* MediasoftTaskProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediasoftTaskProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FDA1E82866EF96001D4A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,12 +50,6 @@
 		97FDA2022866F50D001D4A17 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		97FDA2042866F79C001D4A17 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		97FDA2072866F7BA001D4A17 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		97FDA20F28672360001D4A17 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		97FDA2122867238C001D4A17 /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
-		97FDA215286725EE001D4A17 /* TableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
-		97FDA2172867260B001D4A17 /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
-		97FDA2192867262C001D4A17 /* TableViewCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelProtocol.swift; sourceTree = "<group>"; };
-		97FDA21B2867265C001D4A17 /* TableViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModelProtocol.swift; sourceTree = "<group>"; };
 		97FDA21E286727D7001D4A17 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,13 +58,61 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97750CA3286CC4860095AFA6 /* SQLite in Frameworks */,
+				974DC441286B8D960061DC83 /* Kingfisher in Frameworks */,
+				97E32F90286A2219000DD4A2 /* SnapKit in Frameworks */,
 				97FDA20E2866FBF7001D4A17 /* SnapKit in Frameworks */,
+				971530D82869BC680025BC4E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		971530CE2869B91B0025BC4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				971530D42869BC070025BC4E /* NetworkService.swift */,
+				97750CA4286CC4EA0095AFA6 /* DatabaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		971530CF2869BA0A0025BC4E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				97FDA20B2866F944001D4A17 /* TabBar */,
+				971530D02869BA190025BC4E /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		971530D92869C33D0025BC4E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				97FDA2092866F7BE001D4A17 /* CollectionView */,
+				97FDA20A2866F92A001D4A17 /* LoginView */,
+				97FDA2062866F7A3001D4A17 /* TableView */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		971530E82869DD8A0025BC4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97FDA2042866F79C001D4A17 /* TableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		971530E92869DE3E0025BC4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97FDA2072866F7BA001D4A17 /* CollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		97FDA1DC2866EF96001D4A17 = {
 			isa = PBXGroup;
 			children = (
@@ -81,13 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				97FDA22028675A1C001D4A17 /* Application */,
-				97FDA2092866F7BE001D4A17 /* CollectionViewModule */,
-				97FDA20A2866F92A001D4A17 /* LoginViewModule */,
+				971530CF2869BA0A0025BC4E /* Common */,
 				97FDA21D286727BF001D4A17 /* Models */,
-				97FDA20B2866F944001D4A17 /* TabBarController */,
-				97FDA2062866F7A3001D4A17 /* TableViewModule */,
-				97FDA21128672376001D4A17 /* Protocols */,
-				97FDA214286723C0001D4A17 /* ViewModels */,
+				971530CE2869B91B0025BC4E /* Services */,
+				971530D92869C33D0025BC4E /* Presentation */,
 				97FDA1F12866EF97001D4A17 /* Assets.xcassets */,
 				97FDA1F32866EF97001D4A17 /* LaunchScreen.storyboard */,
 				97FDA1F62866EF97001D4A17 /* Info.plist */,
@@ -95,64 +144,47 @@
 			path = MediasoftTaskProject;
 			sourceTree = "<group>";
 		};
-		97FDA2062866F7A3001D4A17 /* TableViewModule */ = {
+		97FDA2062866F7A3001D4A17 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
 				97FDA2002866F45E001D4A17 /* TableViewController.swift */,
-				97FDA2042866F79C001D4A17 /* TableViewCell.swift */,
+				971530DE2869CC520025BC4E /* TableViewPresenter.swift */,
+				971530E82869DD8A0025BC4E /* Views */,
 			);
-			path = TableViewModule;
+			path = TableView;
 			sourceTree = "<group>";
 		};
-		97FDA2092866F7BE001D4A17 /* CollectionViewModule */ = {
+		97FDA2092866F7BE001D4A17 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				97FDA2022866F50D001D4A17 /* CollectionViewController.swift */,
-				97FDA2072866F7BA001D4A17 /* CollectionViewCell.swift */,
+				971530EA2869DE520025BC4E /* CollectionViewPresenter.swift */,
+				971530E92869DE3E0025BC4E /* Views */,
 			);
-			path = CollectionViewModule;
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
-		97FDA20A2866F92A001D4A17 /* LoginViewModule */ = {
+		97FDA20A2866F92A001D4A17 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
 				97FDA1FC2866F339001D4A17 /* LoginViewController.swift */,
 			);
-			path = LoginViewModule;
+			path = LoginView;
 			sourceTree = "<group>";
 		};
-		97FDA20B2866F944001D4A17 /* TabBarController */ = {
+		97FDA20B2866F944001D4A17 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				97FDA1FE2866F39F001D4A17 /* MainTabBarController.swift */,
 			);
-			path = TabBarController;
-			sourceTree = "<group>";
-		};
-		97FDA21128672376001D4A17 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				97FDA2122867238C001D4A17 /* LoginViewModelProtocol.swift */,
-				97FDA2192867262C001D4A17 /* TableViewCellViewModelProtocol.swift */,
-				97FDA21B2867265C001D4A17 /* TableViewViewModelProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		97FDA214286723C0001D4A17 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				97FDA20F28672360001D4A17 /* LoginViewModel.swift */,
-				97FDA2172867260B001D4A17 /* TableViewCellViewModel.swift */,
-				97FDA215286725EE001D4A17 /* TableViewViewModel.swift */,
-			);
-			path = ViewModels;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		97FDA21D286727BF001D4A17 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				97FDA21E286727D7001D4A17 /* Profile.swift */,
+				971530D22869BBE20025BC4E /* TokenModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +216,10 @@
 			name = MediasoftTaskProject;
 			packageProductDependencies = (
 				97FDA20D2866FBF7001D4A17 /* SnapKit */,
+				971530D72869BC680025BC4E /* Alamofire */,
+				97E32F8F286A2219000DD4A2 /* SnapKit */,
+				974DC440286B8D960061DC83 /* Kingfisher */,
+				97750CA2286CC4860095AFA6 /* SQLite */,
 			);
 			productName = MediasoftTaskProject;
 			productReference = 97FDA1E52866EF96001D4A17 /* MediasoftTaskProject.app */;
@@ -215,6 +251,10 @@
 			mainGroup = 97FDA1DC2866EF96001D4A17;
 			packageReferences = (
 				97FDA20C2866FBF7001D4A17 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				971530D62869BC680025BC4E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				97E32F8E286A2219000DD4A2 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				974DC43F286B8D960061DC83 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				97750CA1286CC4860095AFA6 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 97FDA1E62866EF96001D4A17 /* Products */;
 			projectDirPath = "";
@@ -242,21 +282,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				971530DF2869CC520025BC4E /* TableViewPresenter.swift in Sources */,
 				97FDA2032866F50D001D4A17 /* CollectionViewController.swift in Sources */,
 				97FDA21F286727D7001D4A17 /* Profile.swift in Sources */,
 				97FDA1FD2866F339001D4A17 /* LoginViewController.swift in Sources */,
 				97FDA2082866F7BA001D4A17 /* CollectionViewCell.swift in Sources */,
+				971530EB2869DE520025BC4E /* CollectionViewPresenter.swift in Sources */,
+				97750CA5286CC4EA0095AFA6 /* DatabaseService.swift in Sources */,
+				971530D52869BC070025BC4E /* NetworkService.swift in Sources */,
 				97FDA1E92866EF96001D4A17 /* AppDelegate.swift in Sources */,
 				97FDA1FF2866F39F001D4A17 /* MainTabBarController.swift in Sources */,
 				97FDA2012866F45E001D4A17 /* TableViewController.swift in Sources */,
-				97FDA2182867260B001D4A17 /* TableViewCellViewModel.swift in Sources */,
+				971530D12869BA190025BC4E /* Constants.swift in Sources */,
 				97FDA2052866F79C001D4A17 /* TableViewCell.swift in Sources */,
 				97FDA1EB2866EF96001D4A17 /* SceneDelegate.swift in Sources */,
-				97FDA216286725EE001D4A17 /* TableViewViewModel.swift in Sources */,
-				97FDA21C2867265C001D4A17 /* TableViewViewModelProtocol.swift in Sources */,
-				97FDA2132867238C001D4A17 /* LoginViewModelProtocol.swift in Sources */,
-				97FDA21A2867262C001D4A17 /* TableViewCellViewModelProtocol.swift in Sources */,
-				97FDA21028672360001D4A17 /* LoginViewModel.swift in Sources */,
+				971530D32869BBE20025BC4E /* TokenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +510,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		971530D62869BC680025BC4E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		974DC43F286B8D960061DC83 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		97750CA1286CC4860095AFA6 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+		97E32F8E286A2219000DD4A2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		97FDA20C2866FBF7001D4A17 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -481,6 +553,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		971530D72869BC680025BC4E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 971530D62869BC680025BC4E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		974DC440286B8D960061DC83 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 974DC43F286B8D960061DC83 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		97750CA2286CC4860095AFA6 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97750CA1286CC4860095AFA6 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		97E32F8F286A2219000DD4A2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97FDA20C2866FBF7001D4A17 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		97FDA20D2866FBF7001D4A17 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97FDA20C2866FBF7001D4A17 /* XCRemoteSwiftPackageReference "SnapKit" */;
