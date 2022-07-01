@@ -58,26 +58,26 @@ class TableViewPresenter: TableViewPresenterProtocol {
         
         cell.delegate = self
         
-//        if let model = SQLiteCommands.presentRows() {
-//            print(model)
-//            for x in model {
-//                if cell.model?.id == x.id {
-//                    cell.favouritesButton.tintColor = .systemYellow
-//                    cell.isSelectedButton = true
-//                }
-//            }
-//        }
-        
         if isSearching {
             cell.model = TableViewCellModel(id: filteredData[indexPath.row].id ?? "", name: filteredData[indexPath.row].user?.firstName ?? "",
                                             secondName: filteredData[indexPath.row].user?.lastName ?? "",
                                             description: filteredData[indexPath.row].description ?? "",
-                                            photo: filteredData[indexPath.row].urls?.regular ?? "")
+                                            photo: filteredData[indexPath.row].urls?.regular ?? "", isSelectedButton: false)
         } else {
             cell.model = TableViewCellModel(id: model[indexPath.row].id ?? "", name: model[indexPath.row].user?.firstName ?? "",
                                             secondName: model[indexPath.row].user?.lastName ?? "",
                                             description: model[indexPath.row].description ?? "",
-                                            photo: model[indexPath.row].urls?.regular ?? "")
+                                            photo: model[indexPath.row].urls?.regular ?? "", isSelectedButton: false)
+        }
+        
+        if let model = SQLiteCommands.presentRows() {
+//            print(model)
+            for x in model {
+                if cell.model?.id == x.id {
+                    cell.isSelectedButton = true
+                    cell.favouritesButton.tintColor = .systemYellow
+                }
+            }
         }
         
         cell.setContent()
@@ -144,12 +144,12 @@ extension TableViewPresenter: TableViewCellProtocol {
             }
             let data = Data(model.photo.utf8)
             SQLiteCommands.insertRow(DatabaseModel(id: model.id, firstName: model.name, lastName: model.secondName, photo: data))
-            view?.reloadData()
+//            view?.reloadData()
             
         } else {
             print("selected - FALSE")
             SQLiteCommands.deleteRow(profileId: model.id)
-            view?.reloadData()
+//            view?.reloadData()
         }
     }
 }

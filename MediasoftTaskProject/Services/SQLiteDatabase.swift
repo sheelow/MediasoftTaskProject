@@ -12,7 +12,6 @@ class SQLiteDatabase {
     
     static let shared = SQLiteDatabase()
     var database: Connection?
-//    var model: [TableViewCellModel] = []
     
     init() {
         do {

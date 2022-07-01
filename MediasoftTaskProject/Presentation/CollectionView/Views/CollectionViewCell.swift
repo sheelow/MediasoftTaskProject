@@ -81,7 +81,7 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10
         contentView.layer.shadowRadius = 10
-        contentView.layer.shadowOpacity = 0.1
+        contentView.layer.shadowOpacity = 0.2
         contentView.layer.shadowOffset = CGSize(width: 5, height: 5)
         clipsToBounds = false
     }

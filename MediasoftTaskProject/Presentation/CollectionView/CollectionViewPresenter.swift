@@ -14,7 +14,7 @@ protocol CollectionViewPresenterProtocol: AnyObject {
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    func conversionModel()
+    func configureModel()
 }
 
 //MARK: - CollectionViewPresenter
@@ -40,14 +40,15 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
         
         cell.delegate = self
         
-        cell.model = CollectionViewCellModel(id: model[indexPath.row].id,name: model[indexPath.row].name,
+        cell.model = CollectionViewCellModel(id: model[indexPath.row].id,
+                                             name: model[indexPath.row].name,
                                              secondName: model[indexPath.row].secondName,
                                              photo: model[indexPath.row].photo)
         cell.setContent()
         return cell
     }
     
-    func conversionModel() {
+    func configureModel() {
         conversionModel { [weak self] data in
             self?.model = data
             self?.view?.reloadCollectionView()
@@ -60,7 +61,8 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     }
     
     private func conversionModel(completion: @escaping ([CollectionViewCellModel]) -> Void) {
-        var model: [DatabaseModel] = SQLiteCommands.presentRows() ?? []
+        
+        let model: [DatabaseModel] = SQLiteCommands.presentRows() ?? []
         var cellModel: [CollectionViewCellModel] = []
         
         for x in model {
@@ -71,6 +73,7 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     }
 }
 
+//MARK: - CollectionViewCellProtocol
 extension CollectionViewPresenter: CollectionViewCellProtocol {
     
     func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel) {

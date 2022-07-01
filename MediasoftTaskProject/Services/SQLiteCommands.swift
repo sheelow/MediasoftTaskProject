@@ -44,7 +44,9 @@ class SQLiteCommands {
         
         do {
             try database.run(table.insert(id <- profileValues.id,
-                firstName <- profileValues.firstName, lastName <- profileValues.lastName, photo <- profileValues.photo))
+                                          firstName <- profileValues.firstName,
+                                          lastName <- profileValues.lastName,
+                                          photo <- profileValues.photo))
             return true
         } catch let Result.error(message, code, statement) where code == SQLITE_CONSTRAINT {
             print("Insert row failed: \(message), in \(String(describing: statement))")
@@ -79,6 +81,7 @@ class SQLiteCommands {
                 
 //                print("id \(profile[id]), firstName: \(profile[firstName]), lastName: \(profile[lastName]), photo: \(profile[photo])")
             }
+            
         } catch {
             print("Present row error: \(error)")
         }

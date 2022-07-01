@@ -16,6 +16,7 @@ struct TableViewCellModel {
     let secondName: String
     let description: String
     let photo: String
+    let isSelectedButton: Bool
 }
 
 //MARK: - TableViewCellProtocol
@@ -33,7 +34,7 @@ class TableViewCell: UITableViewCell {
     var isSelectedButton = false
     
     lazy var favouritesButton: UIButton = {
-        let favouritesButton = UIButton(type: .system)
+        let favouritesButton = UIButton(type: .custom)
         favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
@@ -82,7 +83,8 @@ class TableViewCell: UITableViewCell {
     //MARK: - Methods
     override func prepareForReuse() {
         super.prepareForReuse()
-        favouritesButton.tintColor = .systemGray
+        isSelectedButton = false
+        favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
     }
     func setContent() {
         nameLabel.text = (self.model?.name ?? "") + " " + (self.model?.secondName ?? "")
