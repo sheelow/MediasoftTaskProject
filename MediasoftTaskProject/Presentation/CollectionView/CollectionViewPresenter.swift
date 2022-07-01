@@ -10,6 +10,7 @@ import UIKit
 
 //MARK: - CollectionViewPresenterProtocol
 protocol CollectionViewPresenterProtocol: AnyObject {
+    
     var view: CollectionViewProtocol? { get set }
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
@@ -22,6 +23,7 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     
     //MARK: - Properties
     weak var view: CollectionViewProtocol?
+    
     private var model: [CollectionViewCellModel] = []
     
     //MARK: - Methods

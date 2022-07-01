@@ -11,9 +11,11 @@ import SQLite
 class SQLiteDatabase {
     
     static let shared = SQLiteDatabase()
+    
     var database: Connection?
     
     init() {
+        
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("contactList").appendingPathExtension("sqlite3")

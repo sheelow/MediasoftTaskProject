@@ -19,6 +19,7 @@ class SQLiteCommands {
     static let photo = Expression<Data>("photo")
     
     static func createTable() {
+        
         guard let database = SQLiteDatabase.shared.database else {
             print("Datastore connection error")
             return
@@ -37,6 +38,7 @@ class SQLiteCommands {
     }
     
     static func insertRow(_ profileValues: DatabaseModel) -> Bool? {
+        
         guard let database = SQLiteDatabase.shared.database else {
             print("Datasource connection error")
             return nil
@@ -78,8 +80,6 @@ class SQLiteCommands {
                 let profileObject = DatabaseModel(id: idValue, firstName: firstNameValue, lastName: firstLastValue, photo: photoValue)
                 
                 profileArray.append(profileObject)
-                
-//                print("id \(profile[id]), firstName: \(profile[firstName]), lastName: \(profile[lastName]), photo: \(profile[photo])")
             }
             
         } catch {

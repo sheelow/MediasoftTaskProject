@@ -11,6 +11,7 @@ import Kingfisher
 
 //MARK: - CollectionViewCellModel
 struct CollectionViewCellModel {
+    
     let id: String
     let name: String
     let secondName: String
@@ -19,6 +20,7 @@ struct CollectionViewCellModel {
 
 //MARK: - CollectionViewCellProtocol
 protocol CollectionViewCellProtocol: AnyObject {
+    
     func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel)
 }
 
@@ -27,6 +29,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     weak var delegate: CollectionViewCellProtocol?
+    
     var model: CollectionViewCellModel?
     
     private lazy var nameLabel: UILabel = {
@@ -47,7 +50,6 @@ class CollectionViewCell: UICollectionViewCell {
     private lazy var deleteButton: UIButton = {
         let favouritesButton = UIButton(type: .system)
         favouritesButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
-//        favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         favouritesButton.tintColor = .systemGray
         favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
         return favouritesButton

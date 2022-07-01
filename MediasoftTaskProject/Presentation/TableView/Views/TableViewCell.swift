@@ -11,6 +11,7 @@ import Kingfisher
 
 //MARK: - TableViewCellModel
 struct TableViewCellModel {
+    
     let id: String
     let name: String
     let secondName: String
@@ -21,6 +22,7 @@ struct TableViewCellModel {
 
 //MARK: - TableViewCellProtocol
 protocol TableViewCellProtocol: AnyObject {
+    
     func didPressTableViewCellFavouritesButton(isSelected: Bool, model: TableViewCellModel)
 }
 
@@ -30,7 +32,9 @@ class TableViewCell: UITableViewCell {
     
     //MARK: - Properties
     weak var delegate: TableViewCellProtocol?
+    
     var model: TableViewCellModel?
+    
     var isSelectedButton = false
     
     lazy var favouritesButton: UIButton = {

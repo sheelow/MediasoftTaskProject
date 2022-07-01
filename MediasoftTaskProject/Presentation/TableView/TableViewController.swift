@@ -10,6 +10,7 @@ import SnapKit
 
 //MARK: - TableViewProtocol
 protocol TableViewProtocol: AnyObject {
+    
     func configureTableView()
     func reloadData()
 }
@@ -19,6 +20,7 @@ class TableViewController: UIViewController {
     
     //MARK: - Properties
     private var presenter: TableViewPresenterProtocol
+    
     private var timer: Timer?
     
     private lazy var tableView: UITableView = {

@@ -10,6 +10,7 @@ import UIKit
 
 //MARK: - TableViewPresenterProtocol
 protocol TableViewPresenterProtocol: AnyObject {
+    
     var view: TableViewProtocol? { get set }
     var filteredData: [ResultPhoto] { get set }
     func viewDidLoad()
@@ -24,10 +25,15 @@ class TableViewPresenter: TableViewPresenterProtocol {
     
     //MARK: - Properties
     weak var view: TableViewProtocol?
+    
     var filteredData: [ResultPhoto] = []
+    
     private var service: NetworkService?
+    
     private var model: [ResultPhoto] = []
+    
     private var pageCount = 2
+    
     private var isSearching = false
     
     //MARK: - Init

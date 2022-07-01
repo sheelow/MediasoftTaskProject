@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     
     //MARK: - Properties
     private var token:Token?
+    
     private var networkService = NetworkService()
     
     private lazy var webView: WKWebView = {
@@ -35,6 +36,7 @@ class LoginViewController: UIViewController {
     
     //MARK: - Methods
     private func configureURL() {
+        
         guard let url = URL(string: "https://unsplash.com/oauth/authorize?client_id=\(Constants.clientID)&redirect_uri=\(Constants.redirectURL)&response_type=code&scope=public") else { return }
         
         let myRequest = URLRequest(url: url)
