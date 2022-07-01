@@ -38,7 +38,7 @@ class NetworkService {
         
         let parameters: [String: Any] = [
             "page": page,
-            "per_page": 10,
+            "per_page": 30,
             "query": "people",
             "client_id": Constants.clientID
         ]
@@ -48,7 +48,6 @@ class NetworkService {
             case .success(let data):
                 if let data = data {
                     if let result = try? JSONDecoder().decode(Profile.self, from: data) {
-//                        print(result.results)
                         completion(result.results)
                     }
                 }

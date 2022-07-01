@@ -34,10 +34,9 @@ class TableViewCell: UITableViewCell {
     var isSelectedButton = false
     
     lazy var favouritesButton: UIButton = {
-        let favouritesButton = UIButton(type: .custom)
+        let favouritesButton = UIButton(type: .system)
         favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
+        favouritesButton.tintColor = .systemGray
         favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
         return favouritesButton
     }()
@@ -93,7 +92,6 @@ class TableViewCell: UITableViewCell {
     }
     
     private func configureCell() {
-        accessoryView = favouritesButton
         configurePhotoImage()
         configureNameLabel()
         configureFavouritesButton()
@@ -122,6 +120,12 @@ class TableViewCell: UITableViewCell {
     
     private func configureFavouritesButton() {
         accessoryView = favouritesButton
+        addSubview(favouritesButton)
+        favouritesButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().inset(20)
+            make.width.height.equalTo(30)
+        }
     }
     
     private func configureDescriptionLabel() {
@@ -135,6 +139,7 @@ class TableViewCell: UITableViewCell {
     
     @objc
     private func favouritesButtonTapped() {
+        print("button pressed")
         isSelectedButton.toggle()
         favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
         guard let model = model else { return }

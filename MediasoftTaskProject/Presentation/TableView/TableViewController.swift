@@ -19,7 +19,6 @@ class TableViewController: UIViewController {
     
     //MARK: - Properties
     private var presenter: TableViewPresenterProtocol
-    
     private var timer: Timer?
     
     private lazy var tableView: UITableView = {
@@ -55,8 +54,6 @@ class TableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
-        let navBarHeight = UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.height ?? 0.0)
-        tableView.setContentOffset(CGPoint.init(x: 0, y: -navBarHeight), animated: true)
         animateTableView()
     }
     
@@ -134,7 +131,6 @@ extension TableViewController: UITableViewDelegate {
             timer?.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (_) in
                 self.presenter.appendData()
-//                print("fetch more data")
             })
         }
     }

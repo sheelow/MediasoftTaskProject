@@ -60,7 +60,6 @@ class CollectionViewController: UIViewController {
 extension CollectionViewController: CollectionViewProtocol {
     
     func configureCollectionView() {
-//        view.backgroundColor = UIColor(red: 241/255, green: 238/255, blue: 228/255, alpha: 1)
         view.addSubview(сollectionView)
         сollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

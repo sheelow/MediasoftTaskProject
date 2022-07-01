@@ -47,7 +47,7 @@ class CollectionViewCell: UICollectionViewCell {
     private lazy var deleteButton: UIButton = {
         let favouritesButton = UIButton(type: .system)
         favouritesButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
-        favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+//        favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         favouritesButton.tintColor = .systemGray
         favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
         return favouritesButton
@@ -110,6 +110,7 @@ class CollectionViewCell: UICollectionViewCell {
         deleteButton.snp.makeConstraints { make in
             make.left.equalTo(nameLabel.snp.right).offset(10)
             make.centerY.equalTo(nameLabel.snp.centerY)
+            make.width.height.equalTo(30)
         }
     }
     

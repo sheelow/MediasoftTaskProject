@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import CoreAudio
 
 //MARK: - TableViewPresenterProtocol
 protocol TableViewPresenterProtocol: AnyObject {
@@ -43,12 +42,12 @@ class TableViewPresenter: TableViewPresenterProtocol {
     }
     
     func numberOfRowsInSection() -> Int {
+        
         if isSearching {
             return filteredData.count
         } else {
             return model.count
         }
-        
     }
     
     func cellForRow(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +70,7 @@ class TableViewPresenter: TableViewPresenterProtocol {
         }
         
         if let model = SQLiteCommands.presentRows() {
-//            print(model)
+            
             for x in model {
                 if cell.model?.id == x.id {
                     cell.isSelectedButton = true
@@ -133,9 +132,7 @@ extension TableViewPresenter: TableViewCellProtocol {
     func didPressTableViewCellFavouritesButton(isSelected: Bool, model: TableViewCellModel) {
         
         if isSelected {
-            print("selected - TRUE")
             let databaseModel = SQLiteCommands.presentRows()
-//            print(model)
             guard let databaseModel = databaseModel else { return }
             for x in databaseModel {
                 if model.id == x.id {
@@ -144,12 +141,9 @@ extension TableViewPresenter: TableViewCellProtocol {
             }
             let data = Data(model.photo.utf8)
             SQLiteCommands.insertRow(DatabaseModel(id: model.id, firstName: model.name, lastName: model.secondName, photo: data))
-//            view?.reloadData()
             
         } else {
-            print("selected - FALSE")
             SQLiteCommands.deleteRow(profileId: model.id)
-//            view?.reloadData()
         }
     }
 }
