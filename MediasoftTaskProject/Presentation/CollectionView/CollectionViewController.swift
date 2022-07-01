@@ -22,13 +22,10 @@ class CollectionViewController: UIViewController {
     private lazy var сollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = 20
-//        layout.minimumInteritemSpacing = 1
         layout.itemSize = CGSize(width: view.frame.size.width/2.1, height: view.bounds.size.height/4)
         let сollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         сollectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         сollectionView.dataSource = self
-        сollectionView.delegate = self
         return сollectionView
     }()
     
@@ -50,6 +47,12 @@ class CollectionViewController: UIViewController {
         configureCollectionView()
         self.navigationItem.title = "Collection View"
         view.layoutSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadCollectionView()
+        presenter.conversionModel()
     }
 }
 
@@ -81,8 +84,4 @@ extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         presenter.cellForItemAt(collectionView, cellForItemAt: indexPath)
     }
-}
-
-extension CollectionViewController: UICollectionViewDelegate {
-    
 }

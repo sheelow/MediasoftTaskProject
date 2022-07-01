@@ -59,9 +59,7 @@ extension LoginViewController: WKNavigationDelegate {
         }
         let keyAndCode = absoluteURL[1].components(separatedBy: "=")
         let code = keyAndCode[1]
-//        print("absolute URL = \(absoluteURL)")
-//        print("absolute URL = \(keyAndCode)")
-//        print("absolute URL = \(code)")
+        
         self.networkService.getTocken(code: code) { [weak self] data in
             self?.token = data
             let mainTabBarController = MainTabBarController()

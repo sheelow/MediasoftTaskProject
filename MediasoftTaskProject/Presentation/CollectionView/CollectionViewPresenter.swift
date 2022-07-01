@@ -14,29 +14,20 @@ protocol CollectionViewPresenterProtocol: AnyObject {
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    func conversionModel()
 }
 
 //MARK: - CollectionViewPresenter
 final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     
     //MARK: - Properties
-//    var mockData: TableViewCellModel = TableViewCellModel.init(name: "Lox", secondName: "Ebaniy", description: "YA TAKOY", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNDE1MDF8MHwxfHNlYXJjaHwzfHxwZW9wbGV8ZW58MHx8fHwxNjU2NTE5NDYy&ixlib=rb-1.2.1&q=80&w=1080")
     weak var view: CollectionViewProtocol?
-    private var service: DatabaseService?
-    private var model: [TableViewCellModel] = []
-//    DatabaseService.shared.model
-    
-    init() {
-        self.service = DatabaseService()
-    }
+    private var model: [CollectionViewCellModel] = []
     
     //MARK: - Methods
     func viewDidLoad() {
-//        model.append(mockData)
-//        fetchData()
-        model = DatabaseService.shared.model
+        createTable()
         view?.configureCollectionView()
-        print(model.first?.name)
     }
     
     func numberOfRowsInSection() -> Int {
@@ -44,11 +35,51 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     }
     
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        cell.model = CollectionViewCellModel(name: model[indexPath.row].name,
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell
+        guard let cell = cell else { return UICollectionViewCell() }
+        
+        cell.delegate = self
+        
+        cell.model = CollectionViewCellModel(id: model[indexPath.row].id,name: model[indexPath.row].name,
                                              secondName: model[indexPath.row].secondName,
                                              photo: model[indexPath.row].photo)
         cell.setContent()
         return cell
+    }
+    
+    func conversionModel() {
+        conversionModel { [weak self] data in
+            self?.model = data
+            self?.view?.reloadCollectionView()
+        }
+    }
+    
+    private func createTable() {
+        let database = SQLiteDatabase.shared
+        database.createTable()
+    }
+    
+    private func conversionModel(completion: @escaping ([CollectionViewCellModel]) -> Void) {
+        var model: [DatabaseModel] = SQLiteCommands.presentRows() ?? []
+        var cellModel: [CollectionViewCellModel] = []
+        
+        for x in model {
+            let string = String(decoding: x.photo, as: UTF8.self)
+            cellModel.append(CollectionViewCellModel(id: x.id, name: x.firstName, secondName: x.lastName, photo: string))
+        }
+        completion(cellModel)
+    }
+}
+
+extension CollectionViewPresenter: CollectionViewCellProtocol {
+    
+    func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
+            SQLiteCommands.deleteRow(profileId: model.id)
+            self.conversionModel { [weak self] data in
+                self?.model = data
+                self?.view?.reloadCollectionView()
+            }
+        }
     }
 }

@@ -15,7 +15,9 @@
 		971530EB2869DE520025BC4E /* CollectionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530EA2869DE520025BC4E /* CollectionViewPresenter.swift */; };
 		974DC441286B8D960061DC83 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 974DC440286B8D960061DC83 /* Kingfisher */; };
 		97750CA3286CC4860095AFA6 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 97750CA2286CC4860095AFA6 /* SQLite */; };
-		97750CA5286CC4EA0095AFA6 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97750CA4286CC4EA0095AFA6 /* DatabaseService.swift */; };
+		977D8222286E0A1E00E9B27C /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977D8221286E0A1E00E9B27C /* SQLiteDatabase.swift */; };
+		977D8224286E0AD100E9B27C /* SQLiteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977D8223286E0AD100E9B27C /* SQLiteCommands.swift */; };
+		977D8226286E0BC200E9B27C /* DatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977D8225286E0BC200E9B27C /* DatabaseModel.swift */; };
 		97E32F90286A2219000DD4A2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97E32F8F286A2219000DD4A2 /* SnapKit */; };
 		97FDA1E92866EF96001D4A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA1E82866EF96001D4A17 /* AppDelegate.swift */; };
 		97FDA1EB2866EF96001D4A17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */; };
@@ -37,7 +39,9 @@
 		971530D42869BC070025BC4E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		971530DE2869CC520025BC4E /* TableViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPresenter.swift; sourceTree = "<group>"; };
 		971530EA2869DE520025BC4E /* CollectionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPresenter.swift; sourceTree = "<group>"; };
-		97750CA4286CC4EA0095AFA6 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		977D8221286E0A1E00E9B27C /* SQLiteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
+		977D8223286E0AD100E9B27C /* SQLiteCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCommands.swift; sourceTree = "<group>"; };
+		977D8225286E0BC200E9B27C /* DatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
 		97FDA1E52866EF96001D4A17 /* MediasoftTaskProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediasoftTaskProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FDA1E82866EF96001D4A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				971530D42869BC070025BC4E /* NetworkService.swift */,
-				97750CA4286CC4EA0095AFA6 /* DatabaseService.swift */,
+				977D8223286E0AD100E9B27C /* SQLiteCommands.swift */,
+				977D8221286E0A1E00E9B27C /* SQLiteDatabase.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -183,8 +188,9 @@
 		97FDA21D286727BF001D4A17 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				97FDA21E286727D7001D4A17 /* Profile.swift */,
+				977D8225286E0BC200E9B27C /* DatabaseModel.swift */,
 				971530D22869BBE20025BC4E /* TokenModel.swift */,
+				97FDA21E286727D7001D4A17 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,14 +294,16 @@
 				97FDA1FD2866F339001D4A17 /* LoginViewController.swift in Sources */,
 				97FDA2082866F7BA001D4A17 /* CollectionViewCell.swift in Sources */,
 				971530EB2869DE520025BC4E /* CollectionViewPresenter.swift in Sources */,
-				97750CA5286CC4EA0095AFA6 /* DatabaseService.swift in Sources */,
 				971530D52869BC070025BC4E /* NetworkService.swift in Sources */,
 				97FDA1E92866EF96001D4A17 /* AppDelegate.swift in Sources */,
 				97FDA1FF2866F39F001D4A17 /* MainTabBarController.swift in Sources */,
 				97FDA2012866F45E001D4A17 /* TableViewController.swift in Sources */,
 				971530D12869BA190025BC4E /* Constants.swift in Sources */,
+				977D8226286E0BC200E9B27C /* DatabaseModel.swift in Sources */,
 				97FDA2052866F79C001D4A17 /* TableViewCell.swift in Sources */,
 				97FDA1EB2866EF96001D4A17 /* SceneDelegate.swift in Sources */,
+				977D8222286E0A1E00E9B27C /* SQLiteDatabase.swift in Sources */,
+				977D8224286E0AD100E9B27C /* SQLiteCommands.swift in Sources */,
 				971530D32869BBE20025BC4E /* TokenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

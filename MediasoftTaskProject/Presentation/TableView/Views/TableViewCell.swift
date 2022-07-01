@@ -11,14 +11,16 @@ import Kingfisher
 
 //MARK: - TableViewCellModel
 struct TableViewCellModel {
+    let id: String
     let name: String
     let secondName: String
     let description: String
     let photo: String
 }
 
+//MARK: - TableViewCellProtocol
 protocol TableViewCellProtocol: AnyObject {
-    func didPressTableViewCellFavouritesTutton(isSelected: Bool, model: TableViewCellModel)
+    func didPressTableViewCellFavouritesButton(isSelected: Bool, model: TableViewCellModel)
 }
 
 
@@ -28,17 +30,16 @@ class TableViewCell: UITableViewCell {
     //MARK: - Properties
     weak var delegate: TableViewCellProtocol?
     var model: TableViewCellModel?
+    var isSelectedButton = false
     
-    private lazy var favouritesButton: UIButton = {
+    lazy var favouritesButton: UIButton = {
         let favouritesButton = UIButton(type: .system)
         favouritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        favouritesButton.tintColor = .systemGray
+        favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
         favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
         return favouritesButton
     }()
-    
-    private var isSelectedButton = false
     
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
@@ -81,7 +82,6 @@ class TableViewCell: UITableViewCell {
     //MARK: - Methods
     override func prepareForReuse() {
         super.prepareForReuse()
-        isSelectedButton = false
         favouritesButton.tintColor = .systemGray
     }
     func setContent() {
@@ -120,11 +120,6 @@ class TableViewCell: UITableViewCell {
     
     private func configureFavouritesButton() {
         accessoryView = favouritesButton
-//        addSubview(favouritesButton)
-//        favouritesButton.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.right.equalToSuperview().inset(20)
-//        }
     }
     
     private func configureDescriptionLabel() {
@@ -138,10 +133,9 @@ class TableViewCell: UITableViewCell {
     
     @objc
     private func favouritesButtonTapped() {
-//        print("favouritesButton tapped")
         isSelectedButton.toggle()
         favouritesButton.tintColor = isSelectedButton ? .systemYellow : .systemGray
         guard let model = model else { return }
-        delegate?.didPressTableViewCellFavouritesTutton(isSelected: isSelectedButton, model: model)
+        delegate?.didPressTableViewCellFavouritesButton(isSelected: isSelectedButton, model: model)
     }
 }

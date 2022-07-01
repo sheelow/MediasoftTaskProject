@@ -11,20 +11,27 @@ import Kingfisher
 
 //MARK: - CollectionViewCellModel
 struct CollectionViewCellModel {
+    let id: String
     let name: String
     let secondName: String
     let photo: String
+}
+
+//MARK: - CollectionViewCellProtocol
+protocol CollectionViewCellProtocol: AnyObject {
+    func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel)
 }
 
 //MARK: - CollectionViewCell
 class CollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
+    weak var delegate: CollectionViewCellProtocol?
     var model: CollectionViewCellModel?
     
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.textAlignment = .center
+        nameLabel.textAlignment = .left
         nameLabel.numberOfLines = 0
         nameLabel.font = .systemFont(ofSize: 18)
         nameLabel.textColor = .black
@@ -37,12 +44,22 @@ class CollectionViewCell: UICollectionViewCell {
         return photoImageView
     }()
     
+    private lazy var deleteButton: UIButton = {
+        let favouritesButton = UIButton(type: .system)
+        favouritesButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
+        favouritesButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        favouritesButton.tintColor = .systemGray
+        favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
+        return favouritesButton
+    }()
+    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
         configurePhotoImage()
         configureNameLabel()
+        configureFavouritesButton()
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +67,11 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Methods
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        deleteButton.tintColor = .systemGray
+    }
+    
     func setContent() {
         nameLabel.text = (self.model?.name ?? "") + " " + (self.model?.secondName ?? "")
         self.photoImageView.kf.setImage(with: URL(string: model?.photo  ?? ""), placeholder: nil)
@@ -76,9 +98,25 @@ class CollectionViewCell: UICollectionViewCell {
     private func configureNameLabel() {
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(10)
+            make.left.equalToSuperview().inset(10)
+            make.right.equalToSuperview().inset(50)
             make.top.equalTo(photoImageView.snp.bottom)
             make.bottom.equalToSuperview().inset(10)
         }
+    }
+    
+    private func configureFavouritesButton() {
+        addSubview(deleteButton)
+        deleteButton.snp.makeConstraints { make in
+            make.left.equalTo(nameLabel.snp.right).offset(10)
+            make.centerY.equalTo(nameLabel.snp.centerY)
+        }
+    }
+    
+    @objc
+    private func favouritesButtonTapped() {
+        deleteButton.tintColor = .systemRed
+        guard let model = model else { return }
+        delegate?.didPressCollectionViewCellDeleteButton(model: model)
     }
 }

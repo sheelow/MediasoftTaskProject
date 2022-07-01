@@ -54,9 +54,9 @@ class TableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let navBarHeight = UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.height ?? 0.0)
-        tableView.setContentOffset(CGPoint.init(x: 0, y: -navBarHeight), animated: true)
-        animateTableView()
+//        let navBarHeight = UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.height ?? 0.0)
+//        tableView.setContentOffset(CGPoint.init(x: 0, y: -navBarHeight), animated: true)
+//        animateTableView()
     }
     
     //MARK: - Methods
