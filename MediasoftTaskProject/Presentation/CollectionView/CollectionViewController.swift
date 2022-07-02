@@ -9,8 +9,7 @@ import UIKit
 
 //MARK: - CollectionViewProtocol
 protocol CollectionViewProtocol: AnyObject {
-    
-    func configureCollectionView()
+//    func configureCollectionView()
     func reloadCollectionView()
 }
 
@@ -23,7 +22,7 @@ class CollectionViewController: UIViewController {
     private lazy var сollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.frame.size.width/2.1, height: view.bounds.size.height/4)
+        layout.itemSize = CGSize(width: view.frame.size.width / 2.1, height: view.frame.size.height / 4)
         let сollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         сollectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         сollectionView.dataSource = self
@@ -55,17 +54,17 @@ class CollectionViewController: UIViewController {
         reloadCollectionView()
         presenter.configureModel()
     }
-}
-
-//MARK: - CollectionViewProtocol
-extension CollectionViewController: CollectionViewProtocol {
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         view.addSubview(сollectionView)
         сollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
+}
+
+//MARK: - CollectionViewProtocol
+extension CollectionViewController: CollectionViewProtocol {
     
     func reloadCollectionView() {
         DispatchQueue.main.async {

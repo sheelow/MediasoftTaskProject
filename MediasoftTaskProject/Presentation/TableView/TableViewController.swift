@@ -10,7 +10,6 @@ import SnapKit
 
 //MARK: - TableViewProtocol
 protocol TableViewProtocol: AnyObject {
-    
     func configureTableView()
     func reloadData()
 }
@@ -55,8 +54,8 @@ class TableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadData()
         animateTableView()
+        reloadData()
     }
     
     //MARK: - Methods

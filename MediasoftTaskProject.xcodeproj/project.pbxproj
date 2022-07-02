@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		971530D12869BA190025BC4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D02869BA190025BC4E /* Constants.swift */; };
+		971530D12869BA190025BC4E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D02869BA190025BC4E /* AppConstants.swift */; };
 		971530D32869BBE20025BC4E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D22869BBE20025BC4E /* TokenModel.swift */; };
 		971530D52869BC070025BC4E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971530D42869BC070025BC4E /* NetworkService.swift */; };
 		971530D82869BC680025BC4E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 971530D72869BC680025BC4E /* Alamofire */; };
@@ -34,7 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		971530D02869BA190025BC4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		971530D02869BA190025BC4E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		971530D22869BBE20025BC4E /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		971530D42869BC070025BC4E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		971530DE2869CC520025BC4E /* TableViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPresenter.swift; sourceTree = "<group>"; };
@@ -83,15 +83,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		971530CF2869BA0A0025BC4E /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				97FDA20B2866F944001D4A17 /* TabBar */,
-				971530D02869BA190025BC4E /* Constants.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		971530D92869C33D0025BC4E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,10 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				97FDA22028675A1C001D4A17 /* Application */,
-				971530CF2869BA0A0025BC4E /* Common */,
-				97FDA21D286727BF001D4A17 /* Models */,
-				971530CE2869B91B0025BC4E /* Services */,
 				971530D92869C33D0025BC4E /* Presentation */,
+				971530CE2869B91B0025BC4E /* Services */,
+				97FDA21D286727BF001D4A17 /* Models */,
 				97FDA1F12866EF97001D4A17 /* Assets.xcassets */,
 				97FDA1F32866EF97001D4A17 /* LaunchScreen.storyboard */,
 				97FDA1F62866EF97001D4A17 /* Info.plist */,
@@ -198,8 +188,10 @@
 		97FDA22028675A1C001D4A17 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				97FDA20B2866F944001D4A17 /* TabBar */,
 				97FDA1E82866EF96001D4A17 /* AppDelegate.swift */,
 				97FDA1EA2866EF96001D4A17 /* SceneDelegate.swift */,
+				971530D02869BA190025BC4E /* AppConstants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -298,7 +290,7 @@
 				97FDA1E92866EF96001D4A17 /* AppDelegate.swift in Sources */,
 				97FDA1FF2866F39F001D4A17 /* MainTabBarController.swift in Sources */,
 				97FDA2012866F45E001D4A17 /* TableViewController.swift in Sources */,
-				971530D12869BA190025BC4E /* Constants.swift in Sources */,
+				971530D12869BA190025BC4E /* AppConstants.swift in Sources */,
 				977D8226286E0BC200E9B27C /* DatabaseModel.swift in Sources */,
 				97FDA2052866F79C001D4A17 /* TableViewCell.swift in Sources */,
 				97FDA1EB2866EF96001D4A17 /* SceneDelegate.swift in Sources */,

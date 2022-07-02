@@ -140,14 +140,13 @@ extension TableViewPresenter: TableViewCellProtocol {
         if isSelected {
             let databaseModel = SQLiteCommands.presentRows()
             guard let databaseModel = databaseModel else { return }
+            
             for x in databaseModel {
-                if model.id == x.id {
-                    return
-                }
+                if model.id == x.id { return }
             }
+            
             let data = Data(model.photo.utf8)
             SQLiteCommands.insertRow(DatabaseModel(id: model.id, firstName: model.name, lastName: model.secondName, photo: data))
-            
         } else {
             SQLiteCommands.deleteRow(profileId: model.id)
         }

@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
     //MARK: - Methods
     private func configureURL() {
         
-        guard let url = URL(string: "https://unsplash.com/oauth/authorize?client_id=\(Constants.clientID)&redirect_uri=\(Constants.redirectURL)&response_type=code&scope=public") else { return }
+        guard let url = URL(string: "https://unsplash.com/oauth/authorize?client_id=\(AppConstants.clientID)&redirect_uri=\(AppConstants.redirectURL)&response_type=code&scope=public") else { return }
         
         let myRequest = URLRequest(url: url)
         webView.load(myRequest)
@@ -56,7 +56,7 @@ extension LoginViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let absoluteURL = webView.url?.absoluteString.components(separatedBy: "?"),
-              absoluteURL[0] == Constants.redirectURL else {
+              absoluteURL[0] == AppConstants.redirectURL else {
             return
         }
         let keyAndCode = absoluteURL[1].components(separatedBy: "=")

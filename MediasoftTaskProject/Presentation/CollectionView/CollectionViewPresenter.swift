@@ -24,36 +24,36 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     //MARK: - Properties
     weak var view: CollectionViewProtocol?
     
-    private var model: [CollectionViewCellModel] = []
+    private var cellModel: [CollectionViewCellModel] = []
     
     //MARK: - Methods
     func viewDidLoad() {
         createTable()
-        view?.configureCollectionView()
+//        view?.configureCollectionView()
     }
     
     func numberOfRowsInSection() -> Int {
-        return model.count
+        return cellModel.count
     }
     
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell
         guard let cell = cell else { return UICollectionViewCell() }
         
+        cell.model = CollectionViewCellModel(id: cellModel[indexPath.row].id,
+                                             name: cellModel[indexPath.row].name,
+                                             secondName: cellModel[indexPath.row].secondName,
+                                             photo: cellModel[indexPath.row].photo)
         cell.delegate = self
-        
-        cell.model = CollectionViewCellModel(id: model[indexPath.row].id,
-                                             name: model[indexPath.row].name,
-                                             secondName: model[indexPath.row].secondName,
-                                             photo: model[indexPath.row].photo)
         cell.setContent()
         return cell
     }
     
     func configureModel() {
         conversionModel { [weak self] data in
-            self?.model = data
-            self?.view?.reloadCollectionView()
+            guard let self = self else { return }
+            self.cellModel = data
+            self.view?.reloadCollectionView()
         }
     }
     
@@ -67,9 +67,9 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
         let model: [DatabaseModel] = SQLiteCommands.presentRows() ?? []
         var cellModel: [CollectionViewCellModel] = []
         
-        for x in model {
-            let string = String(decoding: x.photo, as: UTF8.self)
-            cellModel.append(CollectionViewCellModel(id: x.id, name: x.firstName, secondName: x.lastName, photo: string))
+        for item in model {
+            let string = String(decoding: item.photo, as: UTF8.self)
+            cellModel.append(CollectionViewCellModel(id: item.id, name: item.firstName, secondName: item.lastName, photo: string))
         }
         completion(cellModel)
     }
@@ -79,12 +79,11 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
 extension CollectionViewPresenter: CollectionViewCellProtocol {
     
     func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
-            SQLiteCommands.deleteRow(profileId: model.id)
-            self.conversionModel { [weak self] data in
-                self?.model = data
-                self?.view?.reloadCollectionView()
-            }
+        SQLiteCommands.deleteRow(profileId: model.id)
+        self.conversionModel { [weak self] data in
+            guard let self = self else { return }
+            self.cellModel = data
+            self.view?.reloadCollectionView()
         }
     }
 }

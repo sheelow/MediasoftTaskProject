@@ -8,7 +8,6 @@
 import Foundation
 
 struct DatabaseModel {
-    
     let id: String
     let firstName: String
     let lastName: String

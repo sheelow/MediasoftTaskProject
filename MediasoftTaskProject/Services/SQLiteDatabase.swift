@@ -15,18 +15,20 @@ class SQLiteDatabase {
     var database: Connection?
     
     init() {
-        
-        do {
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("contactList").appendingPathExtension("sqlite3")
-            database = try Connection(fileUrl.path)
-        } catch {
-            print("Error: \(error)")
-        }
+        connectToDatabase()
     }
     
     func createTable() {
         SQLiteCommands.createTable()
     }
+    
+    private func connectToDatabase() {
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("contactList").appendingPathExtension("sqlite3")
+            database = try Connection(fileUrl.path)
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
 }
-

@@ -10,17 +10,23 @@ import Alamofire
 
 class NetworkService {
     
+    enum Path {
+        static let oauthToken = "https://unsplash.com/oauth/token"
+        static let searchPhotos = "https://api.unsplash.com/search/photos"
+    }
+    
     func getTocken(code: String, completion: @escaping (Token) -> Void) {
         
         let parameters: [String: Any] = [
-            "client_id": Constants.clientID,
-            "client_secret": Constants.clientSecret,
-            "redirect_uri": Constants.redirectURL,
+            "client_id": AppConstants.clientID,
+            "client_secret": AppConstants.clientSecret,
+            "redirect_uri": AppConstants.redirectURL,
             "code": "\(code)",
-            "grant_type": Constants.authorizationCode
+            "grant_type": AppConstants.authorizationCode
         ]
         
-        AF.request("https://unsplash.com/oauth/token", method: .post, parameters: parameters).response { data in
+        AF.request(Path.oauthToken, method: .post, parameters: parameters).response { data in
+            
             switch data.result {
             case .success(let data):
                 if let data = data {
@@ -40,10 +46,11 @@ class NetworkService {
             "page": page,
             "per_page": 30,
             "query": "people",
-            "client_id": Constants.clientID
+            "client_id": AppConstants.clientID
         ]
         
-        AF.request("https://api.unsplash.com/search/photos", method: .get, parameters: parameters).response { data in
+        AF.request(Path.searchPhotos, method: .get, parameters: parameters).response { data in
+            
             switch data.result {
             case .success(let data):
                 if let data = data {

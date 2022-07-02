@@ -8,7 +8,6 @@
 import Foundation
 
 struct Profile: Decodable {
-    
     let results: [ResultPhoto]
 }
 

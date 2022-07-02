@@ -20,10 +20,7 @@ class SQLiteCommands {
     
     static func createTable() {
         
-        guard let database = SQLiteDatabase.shared.database else {
-            print("Datastore connection error")
-            return
-        }
+        guard let database = SQLiteDatabase.shared.database else { return }
         
         do {
             try database.run(table.create(ifNotExists: true) { table in
@@ -39,10 +36,7 @@ class SQLiteCommands {
     
     static func insertRow(_ profileValues: DatabaseModel) -> Bool? {
         
-        guard let database = SQLiteDatabase.shared.database else {
-            print("Datasource connection error")
-            return nil
-        }
+        guard let database = SQLiteDatabase.shared.database else { return nil }
         
         do {
             try database.run(table.insert(id <- profileValues.id,
@@ -54,16 +48,13 @@ class SQLiteCommands {
             print("Insert row failed: \(message), in \(String(describing: statement))")
             return false
         } catch let error {
-            print("Insertion failed: \(error)")
+            print("Insertion failed: \(error.localizedDescription)")
             return false
         }
     }
     
     static func presentRows() -> [DatabaseModel]? {
-        guard let database = SQLiteDatabase.shared.database else {
-            print("Database connection error")
-            return nil
-        }
+        guard let database = SQLiteDatabase.shared.database else { return nil }
         
         var profileArray = [DatabaseModel]()
         
@@ -83,22 +74,19 @@ class SQLiteCommands {
             }
             
         } catch {
-            print("Present row error: \(error)")
+            print("Present row error: \(error.localizedDescription)")
         }
         return profileArray
     }
     
     static func deleteRow(profileId: String) {
-        guard let database = SQLiteDatabase.shared.database else {
-            print("Datastore connection  error")
-            return
-        }
+        guard let database = SQLiteDatabase.shared.database else { return }
         
         do {
             let profile = table.filter(id == profileId).limit(1)
             try database.run(profile.delete())
         } catch {
-            print("Delete row error: \(error)")
+            print("Delete row error: \(error.localizedDescription)")
         }
     }
 }

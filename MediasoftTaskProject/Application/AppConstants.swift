@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Constants {
+enum AppConstants {
     
     static let redirectURL = "https://acegif.com/wp-content/uploads/loading-53.gif"
     static let clientID = "XXBLnh988aQu0BnXjL5yISkbQj4EHDLsEcgZvqttouI"

@@ -11,7 +11,6 @@ import Kingfisher
 
 //MARK: - CollectionViewCellModel
 struct CollectionViewCellModel {
-    
     let id: String
     let name: String
     let secondName: String
@@ -20,7 +19,6 @@ struct CollectionViewCellModel {
 
 //MARK: - CollectionViewCellProtocol
 protocol CollectionViewCellProtocol: AnyObject {
-    
     func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel)
 }
 
@@ -48,11 +46,11 @@ class CollectionViewCell: UICollectionViewCell {
     }()
     
     private lazy var deleteButton: UIButton = {
-        let favouritesButton = UIButton(type: .system)
-        favouritesButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
-        favouritesButton.tintColor = .systemGray
-        favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
-        return favouritesButton
+        let deleteButton = UIButton(type: .system)
+        deleteButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
+        deleteButton.tintColor = .systemGray
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        return deleteButton
     }()
     
     //MARK: - Init
@@ -75,14 +73,16 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func setContent() {
-        nameLabel.text = (self.model?.name ?? "") + " " + (self.model?.secondName ?? "")
-        self.photoImageView.kf.setImage(with: URL(string: model?.photo  ?? ""), placeholder: nil)
+        guard let name = model?.name, let secondName = model?.secondName, let image = model?.photo else { return }
+        
+        nameLabel.text = "\(name) \(secondName)"
+        photoImageView.kf.setImage(with: URL(string: image), placeholder: nil)
     }
     
     private func configureCell() {
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 10
-        contentView.layer.shadowRadius = 10
+        contentView.layer.cornerRadius = contentView.frame.height / 10
+        contentView.layer.shadowRadius = contentView.frame.height / 5
         contentView.layer.shadowOpacity = 0.2
         contentView.layer.shadowOffset = CGSize(width: 5, height: 5)
         clipsToBounds = false
@@ -117,9 +117,11 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @objc
-    private func favouritesButtonTapped() {
-        deleteButton.tintColor = .systemRed
+    private func deleteButtonTapped() {
         guard let model = model else { return }
-        delegate?.didPressCollectionViewCellDeleteButton(model: model)
+        deleteButton.tintColor = .systemRed
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
+            self.delegate?.didPressCollectionViewCellDeleteButton(model: model)
+        }
     }
 }
