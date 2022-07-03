@@ -20,8 +20,6 @@ class TableViewController: UIViewController {
     //MARK: - Properties
     private var presenter: TableViewPresenterProtocol
     
-    private var timer: Timer?
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
@@ -55,7 +53,6 @@ class TableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateTableView()
-        reloadData()
     }
     
     //MARK: - Methods
@@ -81,7 +78,7 @@ class TableViewController: UIViewController {
         for cell in cells {
             cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeights)
             
-            UIView.animate(withDuration: 1.5,
+            UIView.animate(withDuration: 1.1,
                            delay: delay * 0.05,
                            usingSpringWithDamping: 0.8,
                            initialSpringVelocity: 0,
@@ -126,12 +123,24 @@ extension TableViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension TableViewController: UITableViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (_) in
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        let indicator = UIActivityIndicatorView(style: .medium)
+        
+        let position = tableView.contentOffset.y
+        let tableHeight = tableView.contentSize.height
+        if position + tableView.frame.size.height >= tableHeight {
+            indicator.frame = CGRect(x: CGFloat(0), y: 0, width: tableView.bounds.width, height: 44)
+            
+            tableView.tableFooterView = indicator
+            indicator.startAnimating()
+            tableView.tableFooterView?.isHidden = false
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] _ in
+                guard let self = self else { return }
                 self.presenter.appendData()
+                indicator.stopAnimating()
+                self.tableView.tableFooterView?.isHidden = true
             })
         }
     }

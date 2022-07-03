@@ -9,8 +9,10 @@ import Foundation
 import SQLite
 import SQLite3
 
+//MARK: - SQLiteCommands
 class SQLiteCommands {
     
+    //MARK: - Static Properties
     static var table = Table("databaseModel")
     
     static let id = Expression<String>("id")
@@ -18,6 +20,7 @@ class SQLiteCommands {
     static let lastName = Expression<String>("lastName")
     static let photo = Expression<Data>("photo")
     
+    //MARK: - createTable
     static func createTable() {
         
         guard let database = SQLiteDatabase.shared.database else { return }
@@ -34,6 +37,7 @@ class SQLiteCommands {
         }
     }
     
+    //MARK: - insertRow
     static func insertRow(_ profileValues: DatabaseModel) -> Bool? {
         
         guard let database = SQLiteDatabase.shared.database else { return nil }
@@ -53,6 +57,7 @@ class SQLiteCommands {
         }
     }
     
+    //MARK: - presentRows
     static func presentRows() -> [DatabaseModel]? {
         guard let database = SQLiteDatabase.shared.database else { return nil }
         
@@ -79,6 +84,7 @@ class SQLiteCommands {
         return profileArray
     }
     
+    //MARK: - deleteRow
     static func deleteRow(profileId: String) {
         guard let database = SQLiteDatabase.shared.database else { return }
         

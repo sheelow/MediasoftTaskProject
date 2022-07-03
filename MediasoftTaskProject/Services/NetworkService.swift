@@ -8,13 +8,16 @@
 import Foundation
 import Alamofire
 
+//MARK: - NetworkService
 class NetworkService {
     
+    //MARK: - Path
     enum Path {
         static let oauthToken = "https://unsplash.com/oauth/token"
         static let searchPhotos = "https://api.unsplash.com/search/photos"
     }
     
+    //MARK: - getTocken
     func getTocken(code: String, completion: @escaping (Token) -> Void) {
         
         let parameters: [String: Any] = [
@@ -40,11 +43,12 @@ class NetworkService {
         }
     }
     
+    //MARK: - fetchData
     func fetchData(page: Int, _ completion: @escaping ([ResultPhoto]) -> Void) {
         
         let parameters: [String: Any] = [
             "page": page,
-            "per_page": 30,
+            "per_page": 20,
             "query": "people",
             "client_id": AppConstants.clientID
         ]

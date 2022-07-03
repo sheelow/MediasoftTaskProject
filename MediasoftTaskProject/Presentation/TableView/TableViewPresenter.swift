@@ -77,8 +77,8 @@ class TableViewPresenter: TableViewPresenterProtocol {
         
         if let model = SQLiteCommands.presentRows() {
             
-            for x in model {
-                if cell.model?.id == x.id {
+            for i in model {
+                if cell.model?.id == i.id {
                     cell.isSelectedButton = true
                     cell.favouritesButton.tintColor = .systemYellow
                 }
@@ -133,6 +133,7 @@ class TableViewPresenter: TableViewPresenterProtocol {
     }
 }
 
+//MARK: - TableViewCellProtocol
 extension TableViewPresenter: TableViewCellProtocol {
     
     func didPressTableViewCellFavouritesButton(isSelected: Bool, model: TableViewCellModel) {
@@ -141,8 +142,8 @@ extension TableViewPresenter: TableViewCellProtocol {
             let databaseModel = SQLiteCommands.presentRows()
             guard let databaseModel = databaseModel else { return }
             
-            for x in databaseModel {
-                if model.id == x.id { return }
+            for i in databaseModel {
+                if model.id == i.id { return }
             }
             
             let data = Data(model.photo.utf8)

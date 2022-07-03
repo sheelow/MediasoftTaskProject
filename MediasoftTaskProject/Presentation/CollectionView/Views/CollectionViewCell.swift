@@ -41,7 +41,9 @@ class CollectionViewCell: UICollectionViewCell {
     
     private lazy var photoImageView: UIImageView = {
         let photoImageView = UIImageView()
-        photoImageView.contentMode = .scaleAspectFit
+        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.layer.cornerRadius = 15
+        photoImageView.layer.masksToBounds = true
         return photoImageView
     }()
     

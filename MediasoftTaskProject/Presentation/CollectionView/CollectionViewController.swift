@@ -9,7 +9,6 @@ import UIKit
 
 //MARK: - CollectionViewProtocol
 protocol CollectionViewProtocol: AnyObject {
-//    func configureCollectionView()
     func reloadCollectionView()
 }
 

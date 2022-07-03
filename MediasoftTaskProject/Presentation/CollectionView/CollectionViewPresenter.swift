@@ -29,7 +29,6 @@ final class CollectionViewPresenter: CollectionViewPresenterProtocol {
     //MARK: - Methods
     func viewDidLoad() {
         createTable()
-//        view?.configureCollectionView()
     }
     
     func numberOfRowsInSection() -> Int {
