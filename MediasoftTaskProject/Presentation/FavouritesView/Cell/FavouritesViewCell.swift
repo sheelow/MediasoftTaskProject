@@ -9,27 +9,19 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-//MARK: - CollectionViewCellModel
-struct CollectionViewCellModel {
-    let id: String
-    let name: String
-    let secondName: String
-    let photo: String
-}
-
 //MARK: - CollectionViewCellProtocol
-protocol CollectionViewCellProtocol: AnyObject {
-    func didPressCollectionViewCellDeleteButton(model: CollectionViewCellModel)
+protocol FavouritesViewCellProtocol: AnyObject {
+    func didPressFavouritesViewCellDeleteButton(model: FavouritesViewCellModel)
 }
 
 //MARK: - CollectionViewCell
-class CollectionViewCell: UICollectionViewCell {
-    
+final class FavouritesViewCell: UICollectionViewCell {
+
     //MARK: - Properties
-    weak var delegate: CollectionViewCellProtocol?
-    
-    var model: CollectionViewCellModel?
-    
+    weak var delegate: FavouritesViewCellProtocol?
+
+    var model: FavouritesViewCellModel?
+
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .left
@@ -38,7 +30,7 @@ class CollectionViewCell: UICollectionViewCell {
         nameLabel.textColor = .black
         return nameLabel
     }()
-    
+
     private lazy var photoImageView: UIImageView = {
         let photoImageView = UIImageView()
         photoImageView.contentMode = .scaleAspectFill
@@ -46,7 +38,7 @@ class CollectionViewCell: UICollectionViewCell {
         photoImageView.layer.masksToBounds = true
         return photoImageView
     }()
-    
+
     private lazy var deleteButton: UIButton = {
         let deleteButton = UIButton(type: .system)
         deleteButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
@@ -54,7 +46,7 @@ class CollectionViewCell: UICollectionViewCell {
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         return deleteButton
     }()
-    
+
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,24 +55,23 @@ class CollectionViewCell: UICollectionViewCell {
         configureNameLabel()
         configureFavouritesButton()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     //MARK: - Methods
     override func prepareForReuse() {
         super.prepareForReuse()
         deleteButton.tintColor = .systemGray
     }
-    
+
     func setContent() {
         guard let name = model?.name, let secondName = model?.secondName, let image = model?.photo else { return }
-        
         nameLabel.text = "\(name) \(secondName)"
         photoImageView.kf.setImage(with: URL(string: image), placeholder: nil)
     }
-    
+
     private func configureCell() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = contentView.frame.height / 10
@@ -89,7 +80,7 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.layer.shadowOffset = CGSize(width: 5, height: 5)
         clipsToBounds = false
     }
-    
+
     private func configurePhotoImage() {
         addSubview(photoImageView)
         photoImageView.snp.makeConstraints { make in
@@ -98,7 +89,7 @@ class CollectionViewCell: UICollectionViewCell {
             make.height.width.equalTo(200)
         }
     }
-    
+
     private func configureNameLabel() {
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
@@ -108,7 +99,7 @@ class CollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview().inset(10)
         }
     }
-    
+
     private func configureFavouritesButton() {
         addSubview(deleteButton)
         deleteButton.snp.makeConstraints { make in
@@ -117,13 +108,13 @@ class CollectionViewCell: UICollectionViewCell {
             make.width.height.equalTo(30)
         }
     }
-    
+
     @objc
     private func deleteButtonTapped() {
         guard let model = model else { return }
         deleteButton.tintColor = .systemRed
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
-            self.delegate?.didPressCollectionViewCellDeleteButton(model: model)
+            self.delegate?.didPressFavouritesViewCellDeleteButton(model: model)
         }
     }
 }

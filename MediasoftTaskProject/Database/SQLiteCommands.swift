@@ -10,21 +10,21 @@ import SQLite
 import SQLite3
 
 //MARK: - SQLiteCommands
-class SQLiteCommands {
-    
+final class SQLiteCommands {
+
     //MARK: - Static Properties
     static var table = Table("databaseModel")
-    
+
     static let id = Expression<String>("id")
     static let firstName = Expression<String>("firstName")
     static let lastName = Expression<String>("lastName")
     static let photo = Expression<Data>("photo")
-    
+
     //MARK: - createTable
     static func createTable() {
-        
+
         guard let database = SQLiteDatabase.shared.database else { return }
-        
+
         do {
             try database.run(table.create(ifNotExists: true) { table in
                 table.column(id)
@@ -36,12 +36,12 @@ class SQLiteCommands {
             print("Table already exists: \(error)")
         }
     }
-    
+
     //MARK: - insertRow
     static func insertRow(_ profileValues: DatabaseModel) -> Bool? {
-        
+
         guard let database = SQLiteDatabase.shared.database else { return nil }
-        
+
         do {
             try database.run(table.insert(id <- profileValues.id,
                                           firstName <- profileValues.firstName,
@@ -56,15 +56,16 @@ class SQLiteCommands {
             return false
         }
     }
-    
+
     //MARK: - presentRows
     static func presentRows() -> [DatabaseModel]? {
+        
         guard let database = SQLiteDatabase.shared.database else { return nil }
-        
+
         var profileArray = [DatabaseModel]()
-        
+
         table = table.order(id.desc)
-        
+
         do {
             for profile in try database.prepare(table) {
                 
@@ -77,17 +78,18 @@ class SQLiteCommands {
                 
                 profileArray.append(profileObject)
             }
-            
+
         } catch {
             print("Present row error: \(error.localizedDescription)")
         }
         return profileArray
     }
-    
+
     //MARK: - deleteRow
     static func deleteRow(profileId: String) {
+
         guard let database = SQLiteDatabase.shared.database else { return }
-        
+
         do {
             let profile = table.filter(id == profileId).limit(1)
             try database.run(profile.delete())
