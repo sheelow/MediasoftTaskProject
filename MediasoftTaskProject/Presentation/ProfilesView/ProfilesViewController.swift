@@ -153,7 +153,7 @@ extension ProfilesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         self.isSearching = presenter.isSearching
-        
+
         if isSearching {
             return presenter.filteredData.count
         } else {
