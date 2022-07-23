@@ -48,7 +48,7 @@ final class ProfilesViewController: UIViewController {
         presenter.viewDidLoad()
         configureSearchBar()
         configureTableView()
-        self.navigationItem.title = "Table View"
+        self.navigationItem.title = "Profiles"
         view.layoutSubviews()
     }
 
@@ -152,6 +152,8 @@ extension ProfilesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
+        self.isSearching = presenter.isSearching
+        
         if isSearching {
             return presenter.filteredData.count
         } else {

@@ -22,7 +22,7 @@ final class MainTabBarController: UITabBarController {
         let collectionViewNavigationController = UINavigationController(rootViewController: FavouritesViewController(presenter: collectionViewPresenter))
 
         tableViewNavigationController.tabBarItem = UITabBarItem(
-            title: "TableView",
+            title: "Profiles",
             image: UIImage(systemName: "list.bullet.rectangle"),
             tag: 0)
         collectionViewNavigationController.tabBarItem = UITabBarItem(

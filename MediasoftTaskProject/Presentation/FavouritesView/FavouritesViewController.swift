@@ -43,7 +43,7 @@ final class FavouritesViewController: UIViewController {
         super.viewDidLoad()
         presenter.view = self
         configureCollectionView()
-        self.navigationItem.title = "Collection View"
+        self.navigationItem.title = "Favourites"
         view.layoutSubviews()
     }
 

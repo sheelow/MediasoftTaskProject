@@ -13,6 +13,7 @@ protocol ProfilesPresenterProtocol: AnyObject {
     var view: ProfilesViewProtocol? { get set }
     var model: [ResultPhoto] { get set }
     var filteredData: [ResultPhoto] { get set }
+    var isSearching: Bool { get set }
     func viewDidLoad()
     func searchResults(searchText: String)
     func appendData()
@@ -30,9 +31,9 @@ final class ProfilesPresenter: ProfilesPresenterProtocol {
 
     var service: NetworkServiceProtocol
 
-    private var pageCount = 2
+    var isSearching = false
 
-    private var isSearching = false
+    private var pageCount = 2
 
     //MARK: - Init
     init(service: NetworkServiceProtocol) {
